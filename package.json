@@ -1,6 +1,6 @@
 {
   "name": "areu",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "runtime type checker",
   "author": "bichi",
   "main": "dist/app.js",
@@ -74,8 +74,6 @@
     "yup": "^0.23.0"
   },
   "dependencies": {
-    "lodash": "^4.17.4",
-    "moment": "^2.19.2",
-    "uuid": "^3.1.0"
+    "lodash": "^4.17.4"
   }
 }
