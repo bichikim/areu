@@ -1,6 +1,6 @@
 {
   "name": "areu",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "runtime type checker",
   "author": "bichi",
   "main": "dist/app.js",
@@ -16,8 +16,9 @@
     "url": "git+https://github.com/bichikim/areu.git"
   },
   "keywords": [
-    "subdivision",
-    "detail"
+    "runtime",
+    "typed",
+    "schema"
   ],
   "bugs": {
     "url": "https://github.com/bichikim/areu/issues"
