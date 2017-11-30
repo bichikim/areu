@@ -1,5 +1,5 @@
 {
-  "name": "are-u",
+  "name": "areu",
   "version": "0.0.1",
   "description": "runtime type checker",
   "author": "bichi",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pjfactory/subdivision.git"
+    "url": "git+https://github.com/bichikim/areu.git"
   },
   "keywords": [
     "subdivision",
