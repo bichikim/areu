@@ -37,7 +37,7 @@ const schema = object({
     messages: array([number().required(), string().required(), any().required()])
   }).required(),
 })
-// 
+/*
 interface Data{
   age: number
   name: string
@@ -48,7 +48,7 @@ interface Data{
     message?: [number, string, any, ...]
   }
 }
-//
+*/
 console.log(validate(data, schema)) // <== true
 
 ````
