@@ -45,7 +45,7 @@ interface Data{
     apple: boolean,
     phone?: boolean,
     candy: string[],
-    message?: [[number, string, any, ...]]
+    message?: [number, string, any, ...]
   }
 }
 //
