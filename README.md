@@ -13,6 +13,7 @@ npm install --save areu
 
 ## How to use
 ````javascript
+// import {...} from 'areu'
 import {validate, array, any, object, boolean, integer, number, string} from 'src/index'
 
 const data = {
@@ -31,11 +32,23 @@ const schema = object({
   name: string().required(),
   bag: object({
     apple: boolean().required(),
-    phone: boolean().required(),
+    phone: boolean(),
     candy: array([string()]),
-    messages: array([number().required(),string().required(),any().required()])
-  }),
+    messages: array([number().required(), string().required(), any().required()])
+  }).required(),
 })
+// 
+interface Data{
+  age: number
+  name: string
+  bag: {
+    apple: boolean,
+    phone?: boolean,
+    candy: string[],
+    message?: [[number, string, any, ...]]
+  }
+}
+//
 console.log(validate(data, schema)) // <== true
 
 ````
