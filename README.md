@@ -46,6 +46,7 @@ interface Data{
     apple: boolean,
     phone?: boolean,
     candy: string[],
+    ham?: boolean,
     message?: [number, string?, any, ...]
   }
 }
