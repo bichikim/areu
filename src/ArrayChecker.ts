@@ -1,26 +1,26 @@
 /**
  *
- * @author Bichi Kim [bichi@pjfactory.com]
- * @copyright (c) PJ Factory Co.
+ * @author Bichi Kim <bichi@pjfactory.com>
+ * @copyright PJ Factory Co.
  * @license Private
  */
 import _ from 'lodash'
 import {ITypeChecker} from './TypeChecker'
-export class ArrayChecker implements ITypeChecker{
+export class ArrayChecker implements ITypeChecker {
   private _required
   private _schemas
-  constructor(schemas:ITypeChecker[]){
+  constructor(schemas: ITypeChecker[]) {
     this._required = false
     this._schemas = schemas
   }
-  check(data:any):boolean{
+  check(data: any): boolean {
     if(_.isNil(data)){
       return !this._required
     }
     if(!_.isArray(data)){
       return false
     }
-    let checkingFlag:boolean = true
+    let checkingFlag: boolean = true
     // if it has only 1 schemas it means all members are using same schema
     if(this._schemas.length === 1){
       const typeChecker = this._schemas[0]
@@ -40,7 +40,7 @@ export class ArrayChecker implements ITypeChecker{
     }
     return checkingFlag
   }
-  required():ITypeChecker{
+  required(): ITypeChecker {
     this._required = true
     return this
   }

@@ -40,7 +40,7 @@
     "triple-equals": [true, "allow-null-check"],
     "variable-name": [true, "check-format", "allow-leading-underscore"],
     "one-line": [true],
-    "array-type": false,
+    "array-type": [true, "array-simple"],
     "member-access": false,
     "one-variable-per-declaration": false,
     "whitespace": true,
@@ -53,11 +53,11 @@
       "variable-declaration": "nospace"
     },
       {
-        "call-signature": "nospace",
-        "index-signature": "nospace",
-        "parameter": "nospace",
-        "property-declaration": "nospace",
-        "variable-declaration": "nospace"
+        "call-signature": "onespace",
+        "index-signature": "onespace",
+        "parameter": "onespace",
+        "property-declaration": "onespace",
+        "variable-declaration": "onespace"
       }
     ],
    /* "max-classes-per-file": [false]*/

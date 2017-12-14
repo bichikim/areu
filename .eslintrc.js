@@ -20,7 +20,8 @@ module.exports = {
     'linebreak-style': 'off',
     'comma-dangle': ['error', 'always-multiline'],
     'camelcase': 'off',
-    'space-before-blocks': ['error', 'never'],
+    'space-before-blocks': ["error", {
+      "functions": "always", "keywords": "never", "classes": "always"}],
     'func-style': ['error', 'declaration', {'allowArrowFunctions': true }],
     'block-spacing': ['error', 'never'],
     'object-curly-spacing': ['error', 'never'],
@@ -49,6 +50,9 @@ module.exports = {
           before: true,
           after: true,
         },
+        'export': {
+          after: true,
+        },
         'return': {
           before: true,
           after: true,
@@ -69,7 +73,7 @@ module.exports = {
       }
     }],
     // type script
-    'typescript/adjacent-overload-signatures': 'error',
+    'typescript/adjacent-overload-signatures': 'off',
     'typescript/class-name-casing': 'error',
     'typescript/explicit-member-accessibility': 'off',
     'typescript/interface-name-prefix': ['error', 'always'],
@@ -92,6 +96,10 @@ module.exports = {
       overrides: {
         arrow: {
           before: true,
+          after: true,
+        },
+        colon: {
+          before: false,
           after: true,
         }
       }

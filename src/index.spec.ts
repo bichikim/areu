@@ -1,7 +1,7 @@
 /**
  *
- * @author Bichi Kim [bichi@pjfactory.com]
- * @copyright (c) PJ Factory Co.
+ * @author Bichi Kim <bichi@pjfactory.com>
+ * @copyright PJ Factory Co.
  * @license Private
  */
 import {expect} from 'chai'
