@@ -6,14 +6,14 @@
  */
 import _ from 'lodash'
 import {ITypeChecker} from './TypeChecker'
-export class ObjectChecker implements ITypeChecker{
+export class ObjectChecker implements ITypeChecker {
   private _required
   private _schemas
-  constructor(schemas: {[key: string]: ITypeChecker}){
+  constructor(schemas: {[key: string]: ITypeChecker}) {
     this._required = false
     this._schemas = schemas
   }
-  check(data: any): boolean{
+  check(data: any): boolean {
     if(_.isNil(data)){
       return !this._required
     }
@@ -30,7 +30,7 @@ export class ObjectChecker implements ITypeChecker{
     return checkingFlag
   }
 
-  required(): ITypeChecker{
+  required(): ITypeChecker {
     this._required = true
     return this
   }
