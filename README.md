@@ -34,6 +34,7 @@ const schema = object({
     apple: boolean().required(),
     phone: boolean(),
     candy: array([string()]),
+    ham: boolean(),
     messages: array([number().required(), string(), any()])
   }).required(),
 })
