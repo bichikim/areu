@@ -1,8 +1,6 @@
 /**
- *
- * @author Bichi Kim <bichi@pjfactory.com>
- * @copyright PJ Factory Co.
- * @license Private
+ * TypeChecker
+ * @author Bichi Kim <bichi@live.co.kr>
  */
 import isNil from 'lodash/isNil'
 export interface ITypeChecker {

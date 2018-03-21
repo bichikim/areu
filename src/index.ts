@@ -1,8 +1,6 @@
 /**
- *
- * @author Bichi Kim <bichi@pjfactory.com>
- * @copyright PJ Factory Co.
- * @license Private
+ * Are U?
+ * @author Bichi Kim <bichi@live.co.kr>
  */
 import isBoolean from 'lodash/isBoolean'
 import isInteger from 'lodash/isInteger'

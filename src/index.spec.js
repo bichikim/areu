@@ -1,10 +1,8 @@
-/* eslint-disable max-nested-callbacks */
 /**
- *
- * @author Bichi Kim <bichi@pjfactory.com>
- * @copyright PJ Factory Co.
- * @license Private
+ * Spec for Are U?
+ * @author Bichi Kim <bichi@live.co.kr>
  */
+/* eslint-disable max-nested-callbacks */
 import {expect} from 'chai'
 import {any, array, boolean, number, object, string, validate} from './index'
 describe('are-u', () => {

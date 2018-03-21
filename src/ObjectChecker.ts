@@ -1,8 +1,6 @@
 /**
- *
- * @author Bichi Kim <bichi@pjfactory.com>
- * @copyright PJ Factory Co.
- * @license Private
+ * ObjectChecker
+ * @author Bichi Kim <bichi@live.co.kr>
  */
 import forEach from 'lodash/forEach'
 import isArray from 'lodash/isArray'
