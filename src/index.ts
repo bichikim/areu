@@ -4,17 +4,22 @@
  * @copyright PJ Factory Co.
  * @license Private
  */
-import _ from 'lodash'
+import isBoolean from 'lodash/isBoolean'
+import isInteger from 'lodash/isInteger'
+import isNumber from 'lodash/isNumber'
+import isString from 'lodash/isString'
 import {ArrayChecker} from './ArrayChecker'
 import {ObjectChecker} from './ObjectChecker'
 import {IStringChecker, StringChecker} from './StringChecker'
-import {ITypeChecker} from './TypeChecker'
-import {TypeChecker} from './TypeChecker'
-type TObjectCheckerFactory = (schemas: {[key: string]: ITypeChecker}) => ITypeChecker
-type TOArrayCheckerFactory = (schemas: ITypeChecker[]) => ITypeChecker
-type TTypeCheckerFactory = () => ITypeChecker
-type TTypeStringFactory = () => IStringChecker
-type TValidate = (data: any, schema: ITypeChecker) => boolean
+import {ITypeChecker, TypeChecker} from './TypeChecker'
+export type TObjectCheckerFactory = (schemas: {[key: string]: ITypeChecker}) => ITypeChecker
+export type TOArrayCheckerFactory = (schemas: ITypeChecker[]) => ITypeChecker
+export type TTypeCheckerFactory = () => ITypeChecker
+export type TTypeStringFactory = () => IStringChecker
+export type TValidate = (data: any, schema: ITypeChecker) => boolean
+export {
+  ArrayChecker, ObjectChecker, IStringChecker, StringChecker, ITypeChecker, TypeChecker,
+}
 
 export const object: TObjectCheckerFactory = (schemas: {[key: string]: ITypeChecker}) => {
   return new ObjectChecker(schemas)
@@ -25,23 +30,23 @@ export const array: TOArrayCheckerFactory = (schemas: ITypeChecker[]) => {
 }
 
 export const string: TTypeStringFactory = () => {
-  return new StringChecker((data: any) => (_.isString(data)))
+  return new StringChecker((data: any) => isString(data))
 }
 
 export const number: TTypeCheckerFactory = () => {
-  return new TypeChecker((data: any) => (_.isNumber(data)))
+  return new TypeChecker((data: any) => isNumber(data))
 }
 
 export const integer: TTypeCheckerFactory = () => {
-  return new TypeChecker((data: any) => (_.isInteger(data)))
+  return new TypeChecker((data: any) => isInteger(data))
 }
 
 export const boolean: TTypeCheckerFactory = () => {
-  return new TypeChecker((data: any) => (_.isBoolean(data)))
+  return new TypeChecker((data: any) => isBoolean(data))
 }
 
 export const any: TTypeCheckerFactory = () => {
-  return new TypeChecker(() => (true))
+  return new TypeChecker(() => true)
 }
 
 export const validate: TValidate = (data: any, schema: ITypeChecker) => {

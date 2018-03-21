@@ -1,6 +1,7 @@
 {
   "extends": [
-    "tslint:recommended"
+    "tslint:recommended",
+    "tslint-eslint-rules"
   ],
   "rules": {
     "class-name": true,
@@ -9,7 +10,7 @@
     "forin": true,
     "indent": [true, 2],
     "label-position": true,
-    "max-line-length": [true, 140],
+    "max-line-length": [true, 100],
     "no-arg": true,
     "no-bitwise": true,
     "no-console": [true,
@@ -36,6 +37,7 @@
     "quotemark": [true, "single"],
     "radix": true,
     "no-empty-interface": false,
+    "no-string-throw": true,
     "semicolon": [true, "never"],
     "triple-equals": [true, "allow-null-check"],
     "variable-name": [true, "check-format", "allow-leading-underscore"],
@@ -60,7 +62,14 @@
         "variable-declaration": "onespace"
       }
     ],
-   /* "max-classes-per-file": [false]*/
-    "max-classes-per-file": [true, 1]
+    /* "max-classes-per-file": [false]*/
+    "max-classes-per-file": [true, 1],
+    "object-literal-sort-keys": false,
+    /*  "type-literal-delimiter": true,*/
+    "space-before-function-paren": [true, "never"],
+    "brace-style": ["1tbs", {
+      "allowSingleLine": "never"
+    }],
+    "object-curly-spacing": [true, "never"]
   }
 }

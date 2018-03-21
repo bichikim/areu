@@ -4,11 +4,11 @@
  * @copyright PJ Factory Co.
  * @license Private
  */
-import _ from 'lodash'
+import isNil from 'lodash/isNil'
 import {ITypeChecker, TypeChecker} from './TypeChecker'
 const emailReg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i
 const uuidReg = /^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$/
-export interface IStringChecker extends ITypeChecker{
+export interface IStringChecker extends ITypeChecker {
   uuid(): IStringChecker
   email(): IStringChecker
   test(reg: any): IStringChecker
@@ -18,7 +18,7 @@ export class StringChecker extends TypeChecker implements IStringChecker {
   private _uuid: boolean
   private _email: boolean
   private _test: any
-  constructor(validator: (data: any)=>boolean) {
+  constructor(validator: (data: any) => boolean) {
     super(validator)
     this._uuid = false
     this._email = false
@@ -40,7 +40,7 @@ export class StringChecker extends TypeChecker implements IStringChecker {
         return false
       }
     }
-    if(!_.isNil(this._test)){
+    if(!isNil(this._test)){
       if(!this._test.test(data)){
         return false
       }

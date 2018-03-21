@@ -5,7 +5,7 @@
       "mocha"
     ],
     "module": "esnext",
-    "target": "esnext",
+    "target": "es5",
     "lib": [
       "dom",
       "es5",
@@ -16,7 +16,7 @@
       "es2017",
       "esnext"
     ],
-    "noEmitHelpers": true,
+    "noEmitHelpers": false,
     "noImplicitAny": false,
     "allowJs": true,
     "moduleResolution": "node",
@@ -25,16 +25,21 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
-    "outFile": "./build/app.js",
+    /*"outFile": "./build/app.js",*/
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"],
+      "~/*": ["./lib/*"],
+      "@@/*": ["./*"],
+      "~~/*": ["./*"]
     }
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*.ts",
+    "types/*.d.ts"
   ],
-  "files": [
-    "./src/index.ts"
+  "exclude": [
+    "node_modules",
+    "templates"
   ],
   "compileOnSave": false
 }

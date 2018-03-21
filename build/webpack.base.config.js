@@ -6,7 +6,7 @@
  */
 const path = require('path')
 const webpack = require('webpack')
-const {CheckerPlugin} = require('awesome-typescript-loader')
+
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -23,25 +23,35 @@ module.exports = {
     extensions: ['.js', '.ts'],
     alias: {
       '@': resolve('src'),
+      '~': resolve('lib'),
+      '@@': resolve('./'),
+      '~~': resolve('./')
     },
   },
   plugins: [
-    new CheckerPlugin(),
     new webpack.DefinePlugin({
       // ... nothing to add so far
-    })
+    }),
   ],
   module: {
     rules: [
       {
-        test: /\.js$/,
-        use: 'babel-loader',
+        test: /\.ts$/,
         exclude: /node_modules/,
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              appendTsSuffixTo: [/\.vue$/]
+            }
+          },
+        ],
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader',
       }
     ]
   },
-/*  node:{
-    // for joi using in node server
-    net: 'empty',
-  }*/
 }
