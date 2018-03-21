@@ -1,12 +1,16 @@
 /**
- * @author Bichi Kim <bichi@live.co.kr> <bichi@pjfactory.com>
+ * karma settings
+ * This test must have packages below
+ * karma, karma-chai, karma-sourcemap-loader, karma-spec-reporter, karma-webpack
+ * mocha, chai, karma-coverage
+ * @author Bichi Kim <bichi@live.co.kr>
  */
 const webpack = require('../../build/webpack.test.config.js')
 module.exports = function(config) {
   config.set({
     browsers: ['ChromeWithoutSecurity'],
     frameworks: ['mocha', 'chai'],
-    reporters: ['coverage'],
+    reporters: ['spec', 'coverage'],
     files: [
       {pattern: '../../src/**/*.spec.js', watched: false},
     ],
