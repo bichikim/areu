@@ -10,4 +10,17 @@ const WebpackMerge = require('webpack-merge')
 WebpackBaseConfig.entry = null
 module.exports = WebpackMerge(WebpackBaseConfig, {
   devtool: 'inline-source-map',
+  module: {
+    rules: [
+      {
+        test: /\.js$|\.ts$/,
+        use: {
+          loader: 'istanbul-instrumenter-loader',
+          options: { esModules: true }
+        },
+        enforce: 'post',
+        exclude: /node_modules|\.spec\.js$/,
+      }
+    ]
+  }
 })

@@ -1,3 +1,0 @@
-const testsContext =
-  require.context('../../src/elements', true, /^(.(?!.*\.skip\.spec))*?\.spec\.js$/)
-testsContext.keys().forEach(testsContext)

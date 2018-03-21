@@ -8,17 +8,18 @@ module.exports = function(config) {
     frameworks: ['mocha', 'chai'],
     reporters: ['coverage'],
     files: [
-      '../../node_modules/babel-polyfill/dist/polyfill.js',
-      'src.js'
-      // 'coverage.js'
+      {pattern: '../../src/**/*.spec.js', watched: false},
     ],
-    exclude: [],
+    exclude: [
+      '../../src/**/*.spec.skip.js',
+    ],
     preprocessors: {
-      'src.js': ['webpack', 'sourcemap', 'coverage'],
-      // 'coverage.js': ['webpack', 'sourcemap', 'coverage']
+      '../../src/**/*.js': ['webpack', 'sourcemap'],
+      '../../src/**/*.ts': ['webpack', 'sourcemap'],
+      //'': ['webpack', 'sourcemap', 'coverage'],
     },
     coverageReporter: {
-      dir : 'coverage/',
+      dir: 'coverage/',
       reporters: [
         {type: 'html', subdir: 'html'},
         {type: 'lcovonly', subdir: 'lcov'},

@@ -4,7 +4,7 @@
  * @copyright (c) PJ Factory Co.
  * @license Private
  */
-const WebpackBaseConfig = require('./webpack.base.conf')
+const WebpackBaseConfig = require('./webpack.base.config')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const WebpackMerge = require('webpack-merge')
 WebpackBaseConfig.output.libraryTarget = 'commonjs2' // module mode
