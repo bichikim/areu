@@ -3,7 +3,6 @@
  * @author Bichi Kim <bichi@live.co.kr>
  */
 import isBoolean from 'lodash/isBoolean'
-import isInteger from 'lodash/isInteger'
 import {ArrayChecker, IArrayChecker} from './ArrayChecker'
 import {INumberChecker, NumberChecker} from './NumberChecker'
 import {IObjectChecker, ObjectChecker} from './ObjectChecker'

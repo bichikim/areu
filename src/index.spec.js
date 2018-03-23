@@ -193,7 +193,7 @@ describe('are-u', () => {
       data = [{age: 'unknown', name: 'bichi'}]
       expect(validate(data, schema)).to.equal(false)
     })
-    it('can validate with max min length', () => {
+    it('can validate with length', () => {
       const length = 6
       schema = array([string(), continuously]).length(length)
       data = ['the', 'super', 'easy', 'and', 'fast', 'validation']
@@ -201,6 +201,18 @@ describe('are-u', () => {
       data = ['the', 2, false, 'super', 'easy', 'and', 'fast', 'validation']
       expect(validate(data, schema)).to.equal(false)
       data = ['the', 'super', 'easy', 'and', 'fast']
+      expect(validate(data, schema)).to.equal(false)
+    })
+    it('can validate with length', () => {
+      const min = 3, max = 6
+      schema = array([string(), continuously]).min(min).max(max)
+      data = ['the', 'super', 'easy', 'and', 'fast']
+      expect(validate(data, schema)).to.equal(true)
+      data = ['the', 2, false, 'super', 'easy', 'and']
+      expect(validate(data, schema)).to.equal(false)
+      data = ['the', 'super', 'easy', 'and', 'fast', 'validation', 'really']
+      expect(validate(data, schema)).to.equal(false)
+      data = ['the', 'super']
       expect(validate(data, schema)).to.equal(false)
     })
   })

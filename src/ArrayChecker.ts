@@ -28,13 +28,13 @@ export class ArrayChecker extends TypeChecker implements IArrayChecker {
   }
   max(num: number): IArrayChecker {
     this._register((data: any) => {
-      return data.length <= num
+      return data.length < num
     })
     return this
   }
   min(num: number): IArrayChecker {
     this._register((data: any) => {
-      return data.label >= num
+      return data.length > num
     })
     return this
   }

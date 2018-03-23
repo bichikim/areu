@@ -56,18 +56,42 @@ console.log(validate(data, schema)) // <== true
 ````
 
 ## Feature
-* check required of all type
-* check email, uuid, testing regular expression  & any of string type
-* check number type
-* check integer type
-* check object type & members type deeply
-* check array type, members type deeply & members type in order
+* check string type
+  * required
+  * email
+  * uuid
+  * testing regular expression 
+* check number
+  * required
+  * integer
+  * integerSafe
+  * min
+  * max
+* check object type
+  * required
+  * members type
+  * members type deeply 
+* check array type
+  * required
+  * length
+  * min
+  * max
+  * members type deeply
+  * members type by order
+  * members type continuously
 * check boolean
+  * required
 * check any
+  * required
 
 
 ## Future Feature
 * extend schema
-* check html, time, address of string type 
-* check min, max, length of number type
-* check 
+* check string type
+  * html
+  * time
+  * address
+* check object type
+  * length
+  * max
+  * min
