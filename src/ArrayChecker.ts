@@ -2,12 +2,22 @@
  * ArrayChecker
  * @author Bichi Kim <bichi@live.co.kr>
  */
-import {ObjectChecker} from './ObjectChecker'
-import {ITypeChecker} from './TypeChecker'
+import isArray from 'lodash/isArray'
+import memberCheck from './memberCheck'
+import {ITypeChecker, TypeChecker} from './TypeChecker'
 export interface IArrayChecker extends ITypeChecker {
   length(num: number): IArrayChecker
 }
-export class ArrayChecker extends ObjectChecker implements IArrayChecker {
+export class ArrayChecker extends TypeChecker implements IArrayChecker {
+  constructor(schemas: ITypeChecker[]) {
+    super((data: any) => {
+      if(!memberCheck(data, schemas)){
+        return false
+      }
+      return isArray(data)
+    })
+  }
+
   length(num: number): IArrayChecker {
     this._register((data: any) => {
       return data.length === num

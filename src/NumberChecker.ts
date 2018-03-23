@@ -1,6 +1,6 @@
-import {ITypeChecker, TypeChecker} from '@/TypeChecker'
 import {isInteger} from 'lodash'
 import isNumber from 'lodash/isNumber'
+import {ITypeChecker, TypeChecker} from './TypeChecker'
 
 export interface INumberChecker extends ITypeChecker {
   integer(): INumberChecker
