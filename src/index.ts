@@ -44,10 +44,6 @@ export const number: TNumberCheckerFactory = (): INumberChecker => {
   return new NumberChecker()
 }
 
-export const integer: TTypeCheckerFactory = (): ITypeChecker => {
-  return new TypeChecker((data: any) => isInteger(data))
-}
-
 export const boolean: TTypeCheckerFactory = (): ITypeChecker => {
   return new TypeChecker((data: any) => isBoolean(data))
 }
@@ -59,3 +55,5 @@ export const any: TTypeCheckerFactory = (): ITypeChecker => {
 export const validate: TValidate = (data: any, schema: ITypeChecker): boolean => {
   return schema.check(data)
 }
+
+export const continuously: string = '...'

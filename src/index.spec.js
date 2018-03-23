@@ -4,7 +4,16 @@
  */
 /* eslint-disable max-nested-callbacks */
 import {expect} from 'chai'
-import {any, array, boolean, number, object, string, validate} from './index'
+import {
+  any,
+  array,
+  boolean,
+  number,
+  object,
+  string,
+  validate,
+  continuously,
+} from './index'
 describe('are-u', () => {
   let schema
   let data
@@ -53,6 +62,28 @@ describe('are-u', () => {
     it('can validate with required', () => {
       schema = number().required()
       expect(validate(null, schema)).to.equal(false)
+    })
+    it('can validate with integer', () => {
+      schema = number().integer()
+      expect(validate(Number.MIN_VALUE, schema)).to.equal(false)
+      expect(validate(Number.MAX_VALUE, schema)).to.equal(false)
+    })
+    it('can validate with integerSafe', () => {
+      schema = number().integerSafe()
+      expect(validate(Number.MIN_SAFE_INTEGER, schema)).to.equal(false)
+      expect(validate(Number.MAX_SAFE_INTEGER, schema)).to.equal(false)
+    })
+    it('can validate with min', () => {
+      const min = -5
+      schema = number().min(min)
+      expect(validate(min, schema)).to.equal(false)
+      expect(validate(0, schema)).to.equal(true)
+    })
+    it('can validate with min', () => {
+      const max = 5
+      schema = number().min(max)
+      expect(validate(max, schema)).to.equal(false)
+      expect(validate(max + 1, schema)).to.equal(true)
     })
   })
   describe('boolean', () => {
@@ -130,11 +161,18 @@ describe('are-u', () => {
       expect(validate(null, schema)).to.equal(false)
     })
     it('can validate member', () => {
-      schema = array([string()])
+      schema = array([string(), continuously])
       data = ['the', 'super', 'easy', 'and', 'fast', 'validation']
       expect(validate(data, schema)).to.equal(true)
       data = ['the', 'super', 'easy', 'and', 'fast', 2]
       expect(validate(data, schema)).to.equal(false)
+      schema = array([string(), continuously, null, null, null, number()])
+      data = ['the', 'super', 'easy', 'and', 'fast', 2]
+      expect(validate(data, schema)).to.equal(true)
+      data = ['the', 'super', 'easy', 2, 'fast', 2]
+      expect(validate(data, schema)).to.equal(false)
+      data = ['the', 'super', 'easy', 'and', 'fast', 2, 'anything', null]
+      expect(validate(data, schema)).to.equal(true)
     })
     it('can validate member for mixed types', () => {
       schema = array([string(), number(), any().required()])
@@ -153,6 +191,16 @@ describe('are-u', () => {
       data = [{age: 9999, name: 'bichi'}]
       expect(validate(data, schema)).to.equal(false)
       data = [{age: 'unknown', name: 'bichi'}]
+      expect(validate(data, schema)).to.equal(false)
+    })
+    it('can validate with max min length', () => {
+      const length = 6
+      schema = array([string(), continuously]).length(length)
+      data = ['the', 'super', 'easy', 'and', 'fast', 'validation']
+      expect(validate(data, schema)).to.equal(true)
+      data = ['the', 2, false, 'super', 'easy', 'and', 'fast', 'validation']
+      expect(validate(data, schema)).to.equal(false)
+      data = ['the', 'super', 'easy', 'and', 'fast']
       expect(validate(data, schema)).to.equal(false)
     })
   })

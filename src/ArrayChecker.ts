@@ -7,6 +7,8 @@ import memberCheck from './memberCheck'
 import {ITypeChecker, TypeChecker} from './TypeChecker'
 export interface IArrayChecker extends ITypeChecker {
   length(num: number): IArrayChecker
+  max(num: number): IArrayChecker
+  min(num: number): IArrayChecker
 }
 export class ArrayChecker extends TypeChecker implements IArrayChecker {
   constructor(schemas: ITypeChecker[]) {
