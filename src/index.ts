@@ -4,49 +4,58 @@
  */
 import isBoolean from 'lodash/isBoolean'
 import isInteger from 'lodash/isInteger'
-import isNumber from 'lodash/isNumber'
-import isString from 'lodash/isString'
-import {ArrayChecker} from './ArrayChecker'
-import {ObjectChecker} from './ObjectChecker'
+import {ArrayChecker, IArrayChecker} from './ArrayChecker'
+import {INumberChecker, NumberChecker} from './NumberChecker'
+import {IObjectChecker, ObjectChecker} from './ObjectChecker'
 import {IStringChecker, StringChecker} from './StringChecker'
 import {ITypeChecker, TypeChecker} from './TypeChecker'
-export type TObjectCheckerFactory = (schemas: {[key: string]: ITypeChecker}) => ITypeChecker
-export type TOArrayCheckerFactory = (schemas: ITypeChecker[]) => ITypeChecker
+
+export type TObjectCheckerFactory = (schemas: {[key: string]: ITypeChecker}) => IObjectChecker
+export type TArrayCheckerFactory = (schemas: ITypeChecker[]) => IArrayChecker
+export type TTypeStringCheckerFactory = () => IStringChecker
+export type TNumberCheckerFactory = () => INumberChecker
 export type TTypeCheckerFactory = () => ITypeChecker
-export type TTypeStringFactory = () => IStringChecker
 export type TValidate = (data: any, schema: ITypeChecker) => boolean
 export {
-  ArrayChecker, ObjectChecker, IStringChecker, StringChecker, ITypeChecker, TypeChecker,
+  IArrayChecker, ArrayChecker,
+  IObjectChecker, ObjectChecker,
+  IStringChecker, StringChecker,
+  ITypeChecker, TypeChecker,
+  INumberChecker, NumberChecker,
 }
 
-export const object: TObjectCheckerFactory = (schemas: {[key: string]: ITypeChecker}) => {
+export const object: TObjectCheckerFactory = (
+  schemas: {[key: string]: ITypeChecker},
+): IObjectChecker => {
   return new ObjectChecker(schemas)
 }
 
-export const array: TOArrayCheckerFactory = (schemas: ITypeChecker[]) => {
+export const array: TArrayCheckerFactory = (
+  schemas: ITypeChecker[],
+): IArrayChecker => {
   return new ArrayChecker(schemas)
 }
 
-export const string: TTypeStringFactory = () => {
-  return new StringChecker((data: any) => isString(data))
+export const string: TTypeStringCheckerFactory = (): IStringChecker => {
+  return new StringChecker()
 }
 
-export const number: TTypeCheckerFactory = () => {
-  return new TypeChecker((data: any) => isNumber(data))
+export const number: TNumberCheckerFactory = (): INumberChecker => {
+  return new NumberChecker()
 }
 
-export const integer: TTypeCheckerFactory = () => {
+export const integer: TTypeCheckerFactory = (): ITypeChecker => {
   return new TypeChecker((data: any) => isInteger(data))
 }
 
-export const boolean: TTypeCheckerFactory = () => {
+export const boolean: TTypeCheckerFactory = (): ITypeChecker => {
   return new TypeChecker((data: any) => isBoolean(data))
 }
 
-export const any: TTypeCheckerFactory = () => {
+export const any: TTypeCheckerFactory = (): ITypeChecker => {
   return new TypeChecker(() => true)
 }
 
-export const validate: TValidate = (data: any, schema: ITypeChecker) => {
+export const validate: TValidate = (data: any, schema: ITypeChecker): boolean => {
   return schema.check(data)
 }

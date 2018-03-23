@@ -54,3 +54,20 @@ interface Data{
 console.log(validate(data, schema)) // <== true
 
 ````
+
+## Feature
+* check required of all type
+* check email, uuid, testing regular expression  & any of string type
+* check number type
+* check integer type
+* check object type & members type deeply
+* check array type, members type deeply & members type in order
+* check boolean
+* check any
+
+
+## Future Feature
+* extend schema
+* check html, time, address of string type 
+* check min, max, length of number type
+* check 

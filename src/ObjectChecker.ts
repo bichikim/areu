@@ -3,37 +3,32 @@
  * @author Bichi Kim <bichi@live.co.kr>
  */
 import forEach from 'lodash/forEach'
-import isArray from 'lodash/isArray'
 import isFunction from 'lodash/isFunction'
-import isNil from 'lodash/isNil'
 import isObject from 'lodash/isObject'
-import {ITypeChecker} from './TypeChecker'
-export class ObjectChecker implements ITypeChecker {
-  private _required: boolean
-  private _schemas: {[key: string]: ITypeChecker}
-  constructor(schemas: {[key: string]: ITypeChecker}) {
-    this._required = false
-    this._schemas = schemas
-  }
-  check(data: any): boolean {
-    if(isNil(data)){
-      return !this._required
-    }
-    if(!isObject(data) || isFunction(data) || isArray(data)){
-      return false
-    }
-    let checkingFlag: boolean = true
-    forEach(this._schemas, (typeChecker, key) => {
-      if(!typeChecker.check(data[key])){
-        checkingFlag = false
+import {ITypeChecker, TypeChecker} from './TypeChecker'
+export interface IObjectChecker extends ITypeChecker {
+  // nothing
+}
+export class ObjectChecker extends TypeChecker implements IObjectChecker {
+  constructor(
+    schemas: {[key: string]: ITypeChecker} | ITypeChecker[],
+  ) {
+    super((data: any): boolean => {
+      let isOk: boolean = true
+      forEach(schemas, (schema: any) => {
+        if(isObject(schema) && isFunction(schema.check)){
+          if(!schema.check(data)){
+            isOk = false
+            return false
+          }
+        }else{
+          throw new Error('[Object checker] one schema is not typeChecker or checker')
+        }
+      })
+      if(!isOk){
         return false
       }
+      return isObject(data)
     })
-    return checkingFlag
-  }
-
-  required(): ITypeChecker {
-    this._required = true
-    return this
   }
 }

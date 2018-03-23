@@ -2,9 +2,9 @@
  * StringChecker
  * @author Bichi Kim <bichi@live.co.kr>
  */
-import isNil from 'lodash/isNil'
+import isString from 'lodash/isString'
 import {ITypeChecker, TypeChecker} from './TypeChecker'
-const emailReg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i
+const emailReg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/
 const uuidReg = /^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$/
 export interface IStringChecker extends ITypeChecker {
   uuid(): IStringChecker
@@ -13,54 +13,34 @@ export interface IStringChecker extends ITypeChecker {
 }
 
 export class StringChecker extends TypeChecker implements IStringChecker {
-  private _uuid: boolean
-  private _email: boolean
-  private _test: any
-  constructor(validator: (data: any) => boolean) {
-    super(validator)
-    this._uuid = false
-    this._email = false
-    this._test = null
+
+  constructor() {
+    super((data: any) => {
+      return isString(data)
+    })
   }
 
-  check(data: any): boolean {
-    const isOk = super.check(data)
-    if(!isOk){
-      return false
+  test(reg: RegExp): IStringChecker {
+    if(!reg || !reg.test){
+      throw new Error('[are-u test] test reg is not Regular expression')
     }
-    if(this._uuid){
-      if(!uuidReg.test(data)){
-        return false
-      }
-    }
-    if(this._email){
-      if(!emailReg.test(data)){
-        return false
-      }
-    }
-    if(!isNil(this._test)){
-      if(!this._test.test(data)){
-        return false
-      }
-    }
-    return true
-  }
-
-  test(reg: any): IStringChecker {
-    if(reg && reg.test){
-      this._test = reg
-      return this
-    }
-    throw new Error('[are-u test] test reg is not Regular expression')
+    this._register((data: any) => {
+      return reg.test(data)
+    })
+    return this
   }
 
   uuid(): IStringChecker {
-    this._uuid = true
+    this._register((data: any) => {
+      return uuidReg.test(data)
+    })
     return this
   }
 
   email(): IStringChecker {
-    this._email = true
+    this._register((data: any) => {
+      return emailReg.test(data)
+    })
     return this
   }
 }
