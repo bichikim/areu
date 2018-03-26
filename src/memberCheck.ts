@@ -6,6 +6,12 @@ import isObject from 'lodash/isObject'
 import {continuously} from './'
 import {ITypeChecker} from './TypeChecker'
 
+/**
+ * check hole members in an object or an array
+ * @param data
+ * @param schemas
+ * @return {boolean}
+ */
 export default (
   data: any,
   schemas: {[key: string]: ITypeChecker} | ITypeChecker[],

@@ -1,8 +1,8 @@
+/* eslint-disable max-nested-callbacks */
 /**
  * Spec for Are U?
  * @author Bichi Kim <bichi@live.co.kr>
  */
-/* eslint-disable max-nested-callbacks */
 import {expect} from 'chai'
 import {
   any,
