@@ -1,8 +1,8 @@
 # ARE U?
 
-![flow][flow]
+![typescript][typescript]
 
-[flow]:https://img.shields.io/badge/typescript-2.6.*-blue.svg
+[typescript]:https://img.shields.io/badge/typescript-2.7.*-blue.svg
 
 > Run time type checker
 
@@ -14,7 +14,7 @@ npm install --save areu
 ## How to use
 ````javascript
 // import {...} from 'areu'
-import {validate, array, any, object, boolean, integer, number, string} from 'src/index'
+import {validate, array, any, object, boolean, number, string} from 'src/index'
 
 const data = {
   age: 999,

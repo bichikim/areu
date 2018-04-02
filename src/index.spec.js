@@ -1,8 +1,8 @@
+/* eslint-disable max-nested-callbacks */
 /**
  * Spec for Are U?
  * @author Bichi Kim <bichi@live.co.kr>
  */
-/* eslint-disable max-nested-callbacks */
 import {expect} from 'chai'
 import {
   any,
@@ -203,7 +203,7 @@ describe('are-u', () => {
       data = ['the', 'super', 'easy', 'and', 'fast']
       expect(validate(data, schema)).to.equal(false)
     })
-    it('can validate with length', () => {
+    it('can validate with min and max', () => {
       const min = 3, max = 6
       schema = array([string(), continuously]).min(min).max(max)
       data = ['the', 'super', 'easy', 'and', 'fast']
