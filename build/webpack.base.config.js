@@ -1,16 +1,12 @@
-/**
- *
- * @author Bichi Kim [bichi@pjfactory.com]
- * @copyright (c) PJ Factory Co.
- * @license Private
- */
 const path = require('path')
-const webpack = require('webpack')
+const formatter = require('eslint-friendly-formatter')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
+// noinspection JSUnusedGlobalSymbols
 module.exports = {
+  target: 'node',
   entry: {
     app: ['./src/index.ts']
   },
@@ -28,13 +24,17 @@ module.exports = {
       '~~': resolve('./')
     },
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      // ... nothing to add so far
-    }),
-  ],
   module: {
     rules: [
+      {
+        enforce: 'pre',
+        test: /\.(js|ts|vue)/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+        options: {
+          formatter,
+        },
+      },
       {
         test: /\.ts$/,
         exclude: /node_modules/,

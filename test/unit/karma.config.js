@@ -13,6 +13,7 @@ module.exports = function(config) {
     reporters: ['spec', 'coverage'],
     files: [
       {pattern: '../../src/**/*.spec.js', watched: false},
+      {pattern: './specs/**/*.spec.js', watched: false},
     ],
     exclude: [
       '../../src/**/*.spec.skip.js',
@@ -20,7 +21,8 @@ module.exports = function(config) {
     preprocessors: {
       '../../src/**/*.js': ['webpack', 'sourcemap'],
       '../../src/**/*.ts': ['webpack', 'sourcemap'],
-      //'': ['webpack', 'sourcemap', 'coverage'],
+      './specs/**/*.js': ['webpack', 'sourcemap'],
+      './specs/**/*.ts': ['webpack', 'sourcemap'],
     },
     coverageReporter: {
       dir: 'coverage/',

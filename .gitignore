@@ -6,10 +6,10 @@ flow-typed/npm/
 ## bundle folders
 public/
 #dist/
-#docs/
 
-## docs
+## documents
 docs/
+
 
 ## log directories and files
 npm-debug.log*
