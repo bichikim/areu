@@ -1,12 +1,7 @@
 {
   "name": "areu",
-<<<<<<< HEAD
   "version": "0.0.7",
   "description": "runtime type checker",
-=======
-  "version": "0.0.5",
-  "description": "Runtime type checker",
->>>>>>> da4007c2905a4040b8017b083d030c41c1f18873
   "author": "bichi",
   "main": "dist/app.js",
   "types": "src/index.ts",
