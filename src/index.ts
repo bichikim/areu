@@ -10,7 +10,7 @@ import {IStringChecker, StringChecker} from './StringChecker'
 import {ITypeChecker, TypeChecker} from './TypeChecker'
 
 export type TObjectCheckerFactory = (schemas: {[key: string]: ITypeChecker}) => IObjectChecker
-export type TArrayCheckerFactory = (schemas: ITypeChecker[]) => IArrayChecker
+export type TArrayCheckerFactory = (schemas: {[key: string]: ITypeChecker}) => IArrayChecker
 export type TTypeStringCheckerFactory = () => IStringChecker
 export type TNumberCheckerFactory = () => INumberChecker
 export type TTypeCheckerFactory = () => ITypeChecker
@@ -30,7 +30,7 @@ export const object: TObjectCheckerFactory = (
 }
 
 export const array: TArrayCheckerFactory = (
-  schemas: ITypeChecker[],
+  schemas: {[key: string]: ITypeChecker},
 ): IArrayChecker => {
   return new ArrayChecker(schemas)
 }

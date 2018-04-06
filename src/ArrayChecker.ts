@@ -11,7 +11,7 @@ export interface IArrayChecker extends ITypeChecker {
   min(num: number): IArrayChecker
 }
 export class ArrayChecker extends TypeChecker implements IArrayChecker {
-  constructor(schemas: ITypeChecker[]) {
+  constructor(schemas: {[key: string]: ITypeChecker}) {
     super((data: any) => {
       if(!memberCheck(data, schemas)){
         return false

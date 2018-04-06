@@ -13,7 +13,7 @@ export interface IObjectChecker extends ITypeChecker {
 export class ObjectChecker extends TypeChecker implements IObjectChecker {
 
   constructor(
-    schemas: {[key: string]: ITypeChecker} | ITypeChecker[],
+    schemas: {[key: string]: ITypeChecker},
   ) {
     super((data: any): boolean => {
       if(!memberCheck(data, schemas)){
