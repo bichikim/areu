@@ -8,7 +8,7 @@
 const webpack = require('../../build/webpack.test.config.js')
 module.exports = function(config) {
   config.set({
-    browsers: ['ChromeWithoutSecurity'],
+    browsers: ['PhantomJS'],
     frameworks: ['mocha', 'chai'],
     reporters: ['spec', 'coverage'],
     files: [
