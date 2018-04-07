@@ -2,8 +2,7 @@
  * TypeChecker
  * @author Bichi Kim <bichi@live.co.kr>
  */
-import forEach from 'lodash/forEach'
-import isNil from 'lodash/isNil'
+import {forEach, isNil} from 'lodash'
 export interface ITypeChecker {
   check: TChecker
   required(): ITypeChecker

@@ -2,7 +2,7 @@
  * Are U?
  * @author Bichi Kim <bichi@live.co.kr>
  */
-import isBoolean from 'lodash/isBoolean'
+import {isBoolean} from 'lodash'
 import {ArrayChecker, IArrayChecker} from './ArrayChecker'
 import {INumberChecker, NumberChecker} from './NumberChecker'
 import {IObjectChecker, ObjectChecker} from './ObjectChecker'
