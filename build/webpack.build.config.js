@@ -1,12 +1,14 @@
-const WebpackBaseConfig = require('./webpack.base.config')
-const WebpackMerge = require('webpack-merge')
+const webpackBaseConfig = require('./webpack.base.config')
+const webpackMerge = require('webpack-merge')
 const nodeExternals = require('webpack-node-externals');
-WebpackBaseConfig.output.libraryTarget = 'umd' // module mode
-module.exports = WebpackMerge(WebpackBaseConfig, {
+module.exports = webpackMerge(webpackBaseConfig, {
+  output: {
+    library: 'areu',
+    libraryTarget: 'umd',
+    umdNamedDefine: true,
+    globalObject: 'this',
+  },
+  devtool: 'source-map',
   mode: 'production',
-  /**
-   * externals see
-   * @link https://www.npmjs.com/package/webpack-node-externals
-   */
   externals: [nodeExternals()]
 })

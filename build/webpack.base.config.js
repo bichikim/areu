@@ -1,7 +1,8 @@
 const path = require('path')
 const formatter = require('eslint-friendly-formatter')
 
-function resolve (dir) {
+// eslint-disable-next-line func-style
+function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
 // noinspection JSUnusedGlobalSymbols
