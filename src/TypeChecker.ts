@@ -11,9 +11,9 @@ export interface ITypeChecker {
 export type TChecker = (data: any) => boolean
 
 export class TypeChecker implements ITypeChecker {
-  private _required: boolean = false
+  protected _required: boolean = false
   private _checkers: TChecker[] = []
-  private _typeChecker: TChecker
+  private readonly _typeChecker: TChecker
   constructor(validator: TChecker) {
     this._typeChecker = validator
   }
