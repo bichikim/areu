@@ -1,5 +1,5 @@
 # ARE U?
-
+[![Build Status](https://travis-ci.org/bichikim/areu.svg?branch=master)](https://travis-ci.org/bichikim/areu)
 ![typescript][typescript]
 
 [typescript]:https://img.shields.io/badge/typescript-2.7.*-blue.svg
