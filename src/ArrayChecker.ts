@@ -2,7 +2,7 @@
  * ArrayChecker
  * @author Bichi Kim <bichi@live.co.kr>
  */
-import isArray from 'lodash/isArray'
+import {isArray} from 'lodash'
 import memberCheck from './memberCheck'
 import {ITypeChecker, TypeChecker} from './TypeChecker'
 export interface IArrayChecker extends ITypeChecker {

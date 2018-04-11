@@ -1,9 +1,4 @@
-import difference from 'lodash/difference'
-import forEach from 'lodash/forEach'
-import isFunction from 'lodash/isFunction'
-import isNil from 'lodash/isNil'
-import isObject from 'lodash/isObject'
-import isString from 'lodash/isString'
+import {difference, forEach, isFunction, isNil, isObject, isString} from 'lodash'
 import {continuously} from './'
 import {ITypeChecker} from './TypeChecker'
 

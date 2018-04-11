@@ -1,4 +1,4 @@
-import isNumber from 'lodash/isNumber'
+import {isNumber} from 'lodash'
 import {ITypeChecker, TypeChecker} from './TypeChecker'
 
 export interface INumberChecker extends ITypeChecker {

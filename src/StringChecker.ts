@@ -2,7 +2,7 @@
  * StringChecker
  * @author Bichi Kim <bichi@live.co.kr>
  */
-import isString from 'lodash/isString'
+import {isString} from 'lodash'
 import {ITypeChecker, TypeChecker} from './TypeChecker'
 const emailReg = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/
 const uuidReg = /^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$/

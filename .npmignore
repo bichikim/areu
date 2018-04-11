@@ -1,4 +1,3 @@
-src
-test
-media
-build
+test/
+media/
+build/
